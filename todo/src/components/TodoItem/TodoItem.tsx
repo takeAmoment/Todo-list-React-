@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FC } from 'react';
 import { ITodoItemProps } from 'types/types';
 import MyButton from '../UI/button/MyButton';
 import './TodoItem.css';
 import { randomColor } from 'utilits/randomColor';
-import { useTodo } from 'utilits/context/useTodo';
+import { TodoContext } from 'utilits/context/TodoContext';
 
 const TodoItem: FC<ITodoItemProps> = ({ todo }) => {
   const [color] = useState<string>(`#${randomColor()}`);
-  const { checkedTodo, deleteItem, selectTodoIdForEdit } = useTodo();
+  const { checkedTodo, deleteItem, selectTodoIdForEdit } = useContext(TodoContext);
+
   return (
     <div className="todo__item" style={{ border: `1px solid ${color}` }}>
       <div className="item__contant" style={{ opacity: todo.checked ? '0.5' : '1' }}>

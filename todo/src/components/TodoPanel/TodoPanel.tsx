@@ -19,6 +19,7 @@ const TodoPanel: FC<ITodoPanelProps> = (props) => {
   };
 
   const handleClick = () => {
+    console.log('edit');
     const todoItem = { name: todo.name, description: todo.description };
     if (isEdit) {
       return changeTodo(todoItem);
