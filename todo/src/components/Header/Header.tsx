@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { IHeader } from 'types/types';
-import '../styles/Header.css';
+import './Header.css';
 
 const Header: FC<IHeader> = ({ todoCount }) => {
   return (
