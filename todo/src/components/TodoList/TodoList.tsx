@@ -1,17 +1,11 @@
-import React, { FC } from 'react';
-import { ITodoListProps } from 'types/types';
+import React from 'react';
+import { useTodo } from 'utilits/context/useTodo';
 import TodoItem from '../TodoItem/TodoItem';
 import TodoPanel from '../TodoPanel/TodoPanel';
 import './TodoList.css';
 
-const TodoList: FC<ITodoListProps> = ({
-  todoList,
-  deleteItem,
-  checkedTodo,
-  selectTodoIdForEdit,
-  todoIdForEdit,
-  changeTodo,
-}) => {
+const TodoList = () => {
+  const { todoList, todoIdForEdit } = useTodo();
   return (
     <div className="todo__list">
       {todoList.map((item) => {
@@ -21,20 +15,10 @@ const TodoList: FC<ITodoListProps> = ({
               mode="edit"
               key={item.id}
               editTodo={{ name: item.name, description: item.description }}
-              changeTodo={changeTodo}
             />
           );
         }
-        return (
-          <TodoItem
-            key={item.id}
-            todoIdForEdit={todoIdForEdit}
-            todo={item}
-            deleteItem={deleteItem}
-            checkedTodo={checkedTodo}
-            selectTodoIdForEdit={selectTodoIdForEdit}
-          />
-        );
+        return <TodoItem key={item.id} todo={item} />;
       })}
     </div>
   );

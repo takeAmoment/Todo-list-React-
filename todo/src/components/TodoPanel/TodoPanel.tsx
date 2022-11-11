@@ -1,12 +1,14 @@
 import React, { FC } from 'react';
 import { useState } from 'react';
 import { ITodoCreation, ITodoPanelProps } from 'types/types';
+import { useTodo } from 'utilits/context/useTodo';
 import MyButton from '../UI/button/MyButton';
 import MyInput from '../UI/input/MyInput';
 import './TodoPanel.css';
 
 const TodoPanel: FC<ITodoPanelProps> = (props) => {
   const isEdit = props.mode === 'edit';
+  const { addTodo, changeTodo } = useTodo();
   const [todo, setTodo] = useState<ITodoCreation>(
     isEdit ? props.editTodo : { name: '', description: '' }
   );
@@ -19,9 +21,9 @@ const TodoPanel: FC<ITodoPanelProps> = (props) => {
   const handleClick = () => {
     const todoItem = { name: todo.name, description: todo.description };
     if (isEdit) {
-      return props.changeTodo(todoItem);
+      return changeTodo(todoItem);
     }
-    props.addTodo({ name: todo.name, description: todo.description });
+    addTodo({ name: todo.name, description: todo.description });
     setTodo({ name: '', description: '' });
   };
   return (

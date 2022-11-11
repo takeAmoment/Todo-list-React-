@@ -32,12 +32,10 @@ export interface IMyButtonProps extends React.ComponentPropsWithRef<'button'> {
 
 export interface IAddTodoPanelProps {
   mode: 'add';
-  addTodo: ({ name, description }: Omit<ITodo, 'id' | 'checked'>) => void;
 }
 export interface IEditTodoPanelProps {
   mode: 'edit';
   editTodo: Omit<ITodo, 'id' | 'checked'>;
-  changeTodo: ({ name, description }: Omit<ITodo, 'id' | 'checked'>) => void;
 }
 
 export type ITodoPanelProps = IAddTodoPanelProps | IEditTodoPanelProps;
@@ -53,8 +51,4 @@ export interface ITodoListProps {
 
 export interface ITodoItemProps {
   todo: ITodo;
-  deleteItem: (id: number) => void;
-  checkedTodo: (id: number) => void;
-  selectTodoIdForEdit: (id: number) => void;
-  todoIdForEdit: number | null;
 }

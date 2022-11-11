@@ -1,12 +1,13 @@
-import React, { FC } from 'react';
-import { IHeader } from 'types/types';
+import React from 'react';
+import { useTodo } from 'utilits/context/useTodo';
 import './Header.css';
 
-const Header: FC<IHeader> = ({ todoCount }) => {
+const Header = () => {
+  const { todoList } = useTodo();
   return (
     <div className="header__container">
       <div className="header__contant">
-        ToDo List {todoCount} {todoCount > 1 ? 'tasks' : 'task'}
+        ToDo List {todoList.length} {todoList.length > 1 ? 'tasks' : 'task'}
       </div>
     </div>
   );
