@@ -1,11 +1,13 @@
 import React from 'react';
-import { useTodo } from 'utilits/context/useTodo';
 import TodoItem from '../TodoItem/TodoItem';
 import TodoPanel from '../TodoPanel/TodoPanel';
 import './TodoList.css';
+import { selectTodo } from '../../redux/reducers/TodoSlice';
+import useAppSelector from 'hooks/UseAppSelector';
 
 const TodoList = () => {
-  const { todoList, todoIdForEdit } = useTodo();
+  const { todoList, todoIdForEdit } = useAppSelector(selectTodo);
+
   return (
     <div className="todo__list">
       {todoList.map((item) => {

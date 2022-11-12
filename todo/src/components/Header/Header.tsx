@@ -1,9 +1,10 @@
+import useAppSelector from 'hooks/UseAppSelector';
 import React from 'react';
-import { useTodo } from 'utilits/context/useTodo';
+import { selectTodo } from 'redux/reducers/TodoSlice';
 import './Header.css';
 
 const Header = () => {
-  const { todoList } = useTodo();
+  const { todoList } = useAppSelector(selectTodo);
   return (
     <div className="header__container">
       <div className="header__contant">

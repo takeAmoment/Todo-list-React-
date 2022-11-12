@@ -1,14 +1,16 @@
 import React, { FC } from 'react';
 import { useState } from 'react';
 import { ITodoCreation, ITodoPanelProps } from 'types/types';
-import { useTodo } from 'utilits/context/useTodo';
 import MyButton from '../UI/button/MyButton';
 import MyInput from '../UI/input/MyInput';
 import './TodoPanel.css';
+import { todoSlice } from '../../redux/reducers/TodoSlice';
+import useAppDispatch from 'hooks/useAppDispatch';
 
 const TodoPanel: FC<ITodoPanelProps> = (props) => {
   const isEdit = props.mode === 'edit';
-  const { addTodo, changeTodo } = useTodo();
+  const dispatch = useAppDispatch();
+
   const [todo, setTodo] = useState<ITodoCreation>(
     isEdit ? props.editTodo : { name: '', description: '' }
   );
@@ -19,12 +21,11 @@ const TodoPanel: FC<ITodoPanelProps> = (props) => {
   };
 
   const handleClick = () => {
-    console.log('edit');
     const todoItem = { name: todo.name, description: todo.description };
     if (isEdit) {
-      return changeTodo(todoItem);
+      return dispatch(todoSlice.actions.changeTodo(todoItem));
     }
-    addTodo({ name: todo.name, description: todo.description });
+    dispatch(todoSlice.actions.addTodo({ name: todo.name, description: todo.description }));
     setTodo({ name: '', description: '' });
   };
   return (

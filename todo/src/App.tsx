@@ -3,11 +3,12 @@ import Header from 'components/Header/Header';
 import './styles/App.css';
 import TodoPanel from 'components/TodoPanel/TodoPanel';
 import TodoList from 'components/TodoList/TodoList';
-import TodoProvider from 'utilits/context/TodoProvider';
+import store from './redux/store/store';
+import { Provider } from 'react-redux';
 
 const App = () => {
   return (
-    <TodoProvider>
+    <Provider store={store}>
       <div className="app__container">
         <Header />
         <div className="todo__container">
@@ -15,7 +16,7 @@ const App = () => {
           <TodoList />
         </div>
       </div>
-    </TodoProvider>
+    </Provider>
   );
 };
 
