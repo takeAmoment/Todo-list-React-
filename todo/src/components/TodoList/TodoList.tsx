@@ -9,7 +9,7 @@ const TodoList = () => {
   const { todoList, todoIdForEdit } = useAppSelector(selectTodo);
 
   return (
-    <div className="todo__list">
+    <div className="todo__list" data-testid="todo-list">
       {todoList.map((item) => {
         if (item.id === todoIdForEdit) {
           return (
