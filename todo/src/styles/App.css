@@ -1,0 +1,34 @@
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+   --main-backgroundColor: white;
+   --main-textColor: black; 
+}
+
+html,
+body {
+    font-size: 10px;
+    width: 100%;
+    height: 100%;
+    overflow-x: none;
+}
+
+.app__container {   
+    max-width: 1440px;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+}
+.todo__container {
+    width: 600px;
+    height: 500px;
+}
